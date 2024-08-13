@@ -1,0 +1,67 @@
+body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+    background: url('/assets/wallpaperflare.com_wallpaper\ \(25\).jpg') no-repeat center center fixed;
+    background-size: cover;
+}
+
+.login-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.6);
+}
+
+.login-box {
+    background: rgba(255, 255, 255, 0); /* Make the box fully transparent */
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    width: 300px;
+}
+
+.login-box h1 {
+    margin-bottom: 10px;
+    font-size: 38px;
+    color: white; /* Change text color to white for better visibility */
+}
+
+.login-box p {
+    margin-bottom: 20px;
+    color: white; /* Change text color to white for better visibility */
+}
+
+.login-box input {
+    margin-top: 15px;
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background: rgba(255, 255, 255, 0.2); /* Add slight transparency to input fields */
+    color: white; /* Change text color to white for better visibility */
+}
+
+.login-box input::placeholder {
+    color: rgba(255, 255, 255, 0.7); /* Change placeholder text color to a lighter white */
+}
+
+.login-box button {
+    margin-top: 40px;
+    width: 107.5%;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: #ff7f50;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.login-box button:hover {
+    background-color: #ff6347;
+}
+
