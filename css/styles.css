@@ -161,10 +161,11 @@ body.dark-mode {
 }
 
 .user-info img {
-    width: 50px;
-    height: 50px;
-    margin-right: 10px;
+    width: 50px; /* Ukuran ikon */
+    height: 50px; /* Ukuran ikon */
+    vertical-align: middle; /* Menyelaraskan ikon dengan teks */
 }
+
 
 .data-barang {
     display: flex;
@@ -340,7 +341,7 @@ button:hover {
 
 .cards {
     display: flex;
-    justify-content: space-around;
+    justify-content: flex-start;
     margin: 20px 0;
     gap: 20px;
 }
@@ -401,7 +402,7 @@ a{
 }
 
 /* Large screens (desktops, 1024px and up) */
-@media (min-width: 1024px) {
+@media (min-width: 1023px) {
     .sidebar {
         display: block;
     }
@@ -409,44 +410,23 @@ a{
         margin-left: 250px;
     }
     .header {
-        width: calc(96% - 250px); /* Adjust header width */
-    }
-    
-}
-
-/* Medium screens (tablets, 768px - 1023px) */
-@media (max-width: 1023px) {
-    .sidebar {
-        display: none;
-    }
-    .content {
-        margin-left: 0;
-    }
-    .form-container {
-        display: none;
-    }
-    .img-tr {
-        width: 100px;
-        height: 100px;
-    }
-    .header {
-        width: 94%;
+        width: calc( 97% - 250px); /* Adjust header width */
     }
     .table-container {
+        font-size: 12px;
         padding: 10px;
-        width: 96%;
+        width: calc( 96% - 27%); /* Sesuaikan lebar table-container menjadi 67% */
     }
-    .data-table th,
-    .data-table td {
-        padding: 10px;
-        font-size: 14px;
+    .form-container{
+        font-size: 10px;
+        width: 230px;
     }
-    .img-tr {
-        width: 150px;
-        height: 150px;
-    }
+    
 
 }
+
+
+
 
 /* Small screens (mobile devices, 767px and below) */
 @media (max-width: 768px) {
@@ -480,5 +460,125 @@ a{
         padding: 8px;
     }
 
+}
 
+.nav a.active {
+    background-color: #007bff; /* Warna latar belakang untuk link yang aktif */
+    color: #fff; /* Warna teks untuk link yang aktif */
+}
+
+.admin-clickable {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+.admin-img {
+    width: 50px;
+    height: 50px;
+}
+
+.admin-text {
+    margin-left: 10px;
+    color: white;
+    font-size: 20px;
+}
+
+.modal {
+    display: none; /* Mulai sebagai tersembunyi */
+    position: fixed; /* Tetap di posisi yang sama saat halaman di-scroll */
+    z-index: 1000; /* Pastikan overlay berada di atas semua elemen lain */
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden; /* Mencegah scroll di dalam modal */
+    background-color: rgba(0, 0, 0, 0.8); /* Latar belakang gelap untuk menutupi elemen lain */
+}
+
+/* Konten di dalam modal */
+.modal-content {
+    position: relative;
+    background-color: #fff;
+    margin: 10% auto; /* Posisikan di tengah halaman */
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    max-width: 500px;
+    z-index: 1001; /* Pastikan konten modal berada di atas overlay */
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px 2px rgba(0, 0, 0, 0.5);
+}
+
+
+.btn-confirm, .btn-cancel {
+    background-color: var(--button-background-color);
+    color: var(--button-text-color);
+    padding: 10px;
+    margin: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.btn-confirm:hover, .btn-cancel:hover {
+    background-color: #218838;
+}
+
+.form-overlay {
+    display: none;
+    position: fixed;
+    right: 20px;
+    top: 100px;
+    width: 270px;
+    height: 458.5px;
+    border-radius: 7px;
+    background-color: rgba(0, 0, 0, 0.75); /* Sedikit transparan */
+    z-index: 100; /* Harus lebih tinggi dari form */
+}
+
+/* Class baru untuk popup di tengah dashboard\\\*/
+.centered-modal {
+    display: none; /* Awalnya tersembunyi */
+    position: fixed; /* Tetap di posisi yang sama saat halaman di-scroll */
+    z-index: 1100; /* Pastikan berada di atas semua elemen lain */
+    left: 50%; /* Pusatkan secara horizontal */
+    top: 50%; /* Pusatkan secara vertikal */
+    transform: translate(-50%, -50%); /* Offset agar benar-benar di tengah */
+    width: 80%;
+    max-width: 600px; /* Atur lebar maksimum */
+    background-color: #fff;
+    padding: 20px;
+    border: 1px solid #888;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px 2px rgba(0, 0, 0, 0.5);
+}
+.centered-modal .btn-confirm, 
+.centered-modal .btn-cancel {
+    background-color: var(--button-background-color);
+    color: var(--button-text-color);
+    padding: 10px;
+    margin: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.centered-modal .btn-confirm:hover, 
+.centered-modal .btn-cancel:hover {
+    background-color: #218838;
+}
+
+/* Overlay khusus untuk centered-modal */
+.centered-modal-overlay {
+    display: none; /* Mulai sebagai tersembunyi */
+    position: fixed;
+    z-index: 1099; /* Pastikan berada di bawah modal */
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.75); /* Overlay gelap */
 }
