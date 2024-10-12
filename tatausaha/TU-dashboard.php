@@ -1,14 +1,15 @@
 <?php 
+include '../partials/TU-header.php'; 
+include '../db/db.php'; 
+
 session_start();
-include '../partials/header.php';
-include '../db/db.php';
 
-
-// Cek apakah pengguna sudah login dan role-nya administrator
-if (!isset($_SESSION['role']) || $_SESSION['role'] !== 'administrator') {
+// Cek apakah pengguna sudah login dan role-nya Tata Usaha
+if (!isset($_SESSION['role']) || $_SESSION['role'] !== 'tatausaha') {
     header("Location: Login.php");
     exit();
 }
+
 
 ?>
 
@@ -17,7 +18,7 @@ if (!isset($_SESSION['role']) || $_SESSION['role'] !== 'administrator') {
         <div class="user-info" id="userInfo">
             <div class="admin-clickable" id="adminClickable">
                 <img src="/assets/user.png" alt="Admin" class="admin-img">
-                <span class="admin-text">admin ▼</span>
+                <span class="admin-text">TataUsaha ▼</span>
             </div>
         </div>
     </div>
@@ -36,42 +37,31 @@ if (!isset($_SESSION['role']) || $_SESSION['role'] !== 'administrator') {
     <h1>Dashboard</h1>
     <div class="cards">
 
-        <a href="/pages/DataUser.php" class="card">
+        <a href="/tatausaha/TU-DataBarang.php" class="card">
             <div class="card-content">
-                <img src="/assets/team.png" alt="Data User">
-                <h3>Data User</h3>
-                <p>112.000</p>
-            </div>
-        </a>
-
-        <a href="/pages/DataBarang.php" class="card">
-            <div class="card-content">
-                <img src="/assets/box.png" alt="Data Barang">
+                <img src="/assets/box.png" alt="Data User">
                 <h3>Data Barang</h3>
                 <p>112.000</p>
             </div>
         </a>
 
-        <a href="/pages/DataPeminjaman.php" class="card">
+        <a href="/tatausaha/TU-DataRequest.php" class="card">
             <div class="card-content">
-                <img src="/assets/signing.png" alt="Data Peminjaman">
-                <h3>Data Peminjaman</h3>
+                <img src="/assets/email.png" alt="Data Barang">
+                <h3>Data Request</h3>
+                <p>112.000</p>
+            </div>
+        </a>
+
+        <a href="/tatausaha/TU-History.php" class="card">
+            <div class="card-content">
+                <img src="/assets/clock.png" alt="Data Peminjaman">
+                <h3> Data History</h3>
                 <p>112.000</p>
             </div>
         </a>
     </div>
 </div>
-<!-- Popup untuk Notifikasi -->
-<div id="notificationModal" class="modal">
-    <span class="close" onclick="document.getElementById('notificationModal').style.display='none'">&times;</span>
-    <h2>Notifikasi</h2>
-    <ul id="notificationList">
-        <?php foreach ($notifications as $notification): ?>
-            <li><?php echo $notification['message']; ?></li>
-        <?php endforeach; ?>
-    </ul>
-</div>
-
 
 <script>
 // Fungsi untuk menampilkan modal konfirmasi logout
@@ -81,19 +71,12 @@ document.getElementById('adminClickable').addEventListener('click', function() {
         // Jika pengguna menekan "OK"
         alert("Logout berhasil!");
         // Aksi logout bisa ditambahkan di sini, seperti redirect ke halaman login
-        window.location.href = '/Login.php';
+        window.location.href = '/login.php';
     } else {
         // Jika pengguna menekan "Cancel"
         alert("Logout dibatalkan.");
     }
 });
-
- // Tampilkan modal notifikasi saat halaman di-load jika ada notifikasi baru
- window.onload = function() {
-        <?php if (count($notifications) > 0): ?>
-            document.getElementById('notificationModal').style.display = 'block';
-        <?php endif; ?>
-    };
 </script>
 
 <?php include '../partials/footer.php'; ?>

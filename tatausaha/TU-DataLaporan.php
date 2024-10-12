@@ -1,6 +1,6 @@
 <?php 
 include '../db/db.php'; // Koneksi ke database
-include '../partials/header.php'; 
+include '../partials/TU-header.php'; 
 include '../control/delete_laporan.php'; 
 ?>
 
@@ -10,7 +10,7 @@ include '../control/delete_laporan.php';
         <div class="user-info" id="userInfo">
             <div class="admin-clickable" id="adminClickable">
                 <img src="/assets/user.png" alt="Admin" class="admin-img">
-                <span class="admin-text">admin ▼</span>
+                <span class="admin-text">TataUsaha ▼</span>
             </div>
         </div>
 

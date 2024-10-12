@@ -145,14 +145,13 @@ body.dark-mode {
 }
 
 .header {
-    z-index: 9999; /* Pastikan ini lebih tinggi dari z-index popup */
     background-color: var(--user-header);
     border-radius: 5px ;
     position: fixed;
     display: flex;
     justify-content: flex-end;
     height: 70px;
-    width: 85%;
+    width: 84%;
 }
 
 .user-info {
@@ -163,7 +162,7 @@ body.dark-mode {
 
 .user-info img {
     width: 50px; /* Ukuran ikon */
-    height: 50px; /* Ukuran ikon */c
+    height: 50px; /* Ukuran ikon */
     vertical-align: middle; /* Menyelaraskan ikon dengan teks */
 }
 
@@ -175,7 +174,7 @@ body.dark-mode {
 
 .table-container {
     margin-top: 90px;
-    width: 100%;
+    width: 75%;
     overflow-x: auto;
     padding: 20px;
     background-color: var(--background-color);
@@ -216,6 +215,69 @@ body.dark-mode {
     background-color: #fbfbfb;
 }
 
+
+.img-tr {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+}
+
+.img-tr:hover {
+    
+    transform: scale(1.05);
+}
+
+/* data-barang menu item */
+
+.data-barang-container {
+    display: flex;
+    justify-content: space-between;
+}
+
+.table-container-barang{
+    margin-top: 90px;
+    width: 75%;
+    overflow-x: auto;
+    padding: 20px;
+    background-color: var(--background-color);
+    border-radius: 8px;
+    box-shadow: 0 8px 8px rgb(146, 136, 136);
+}
+.data-table-barang{
+    width: 100%;
+    border-collapse: collapse;
+    font-family: 'Poppins', sans-serif;
+}
+
+.data-table-barang th,
+.data-table-barang td {
+    padding: 15px;
+    text-align: left;
+    border-bottom: 1px solid #000000;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.data-table-barang th {
+    background-color: #FF8343;
+    color: #333;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+}
+
+.data-table-barang td {
+    background-color: var(--card-background-color);
+    color: var(--text-color);
+}
+
+
+
+.data-table-barang tr:nth-child(even) {
+    background-color: #fbfbfb;
+}
+
 .img-tr {
     width: 200px;
     height: 200px;
@@ -233,7 +295,7 @@ body.dark-mode {
 .modal {
     display: none;
     position: fixed;
-    z-index: 9998; /* Modal akan memiliki z-index lebih rendah dari header */
+    z-index: 1000;
     padding-top: 100px;
     left: 0;
     top: 0;
@@ -268,7 +330,22 @@ body.dark-mode {
     cursor: pointer;
 }
 
+.form-container {
+    width: 300px;
+    position: fixed;
+    right: 20px;
+    top: 100px;
+    background-color: var(--card-background-color);
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px var(--box-shadow-color);
+    z-index: 10;
+    transition: box-shadow 0.3s ease;
+}
 
+.form-container:hover {
+    box-shadow: 0 6px 12px var(--box-shadow-hover-color);
+}
 
 form {
     display: flex;
@@ -370,7 +447,6 @@ button:hover {
     font-weight: 300;
     color: var(--secondary-color);
 }
-
 .dashboard{
     margin-right: 40%;
     margin-top: 85px;
@@ -390,140 +466,71 @@ a{
     transition: background-color 0.3s, color 0.3s;
 }
 
-
-/* Aturan untuk perangkat besar (desktop) */
-@media (min-width: 1024px) {
-    .cards {
-        display: flex;
-        justify-content: flex-start;
-        gap: 30px;
-    }
-
-    .card {
-        width: 25%;
-        margin: 0 auto; /* Tengah secara horizontal */
-    }
-
-    .content {
-        margin-left: 250px;
-        padding: 20px;
-        flex-grow: 1;
-        height: 90vh;
-        transition: background-color 0.3s;
-    }
-
-    .table-container {
-        width: 100%;
-       
-    }
-}
-
-/* Aturan untuk perangkat sedang (tablet) */
-@media (max-width: 1023px) and (min-width: 768px) {
-    .cards {
-        flex-direction: column;
-        gap: 20px;
-    }
-
-    .card {
-        width: 50%;
-        margin: 0 auto;
-    }
-
-    .content {
-        margin-left: 250px;
-        padding: 15px;
-    }
-
-    .table-container {
-        overflow-x: auto;
-        -webkit-overflow-scrolling: touch;
-    }
-    .header {
-        width: calc(90% - 20%);
-        padding: 0 10px; /* Kurangi padding pada layar lebih kecil */
-    }
-}
-
-/* Aturan untuk perangkat kecil (ponsel) */
-@media (max-width: 767px) {
+/* Large screens (desktops, 1024px and up) */
+@media (min-width: 1023px) {
     .sidebar {
-        width: 100%;
-        height: auto;
-        position: relative;
+        display: block;
     }
-
     .content {
-        margin-left: 0;
-        padding: 10px;
+        margin-left: 250px;
     }
-
     .header {
-        width: 100%;
-        padding: 0 10px; /* Kurangi padding pada layar lebih kecil */
+        width: calc( 97% - 250px); /* Adjust header width */
     }
-   
+    .table-container {
+        font-size: 11px;
+        padding: 10px;
+        width: 100% /* Sesuaikan lebar table-container menjadi 67% */
+    }
+    .table-container-barang{
+        font-size: 11px;
+        padding: 10px;
+        width: 100%; /* Sesuaikan lebar table-container menjadi 67% */
+    }
+    .form-container{
+        font-size: 10px;
+        width: 230px;
+    }
+    .img-tr{
+        width: 180px;
+        height: 180px;
+    }
+}
 
+
+/* Small screens (mobile devices, 767px and below) */
+@media (max-width: 768px) {
     .cards {
+        margin-right: 35px;
         flex-direction: column;
         gap: 10px;
     }
-
     .card {
         width: 100%;
-        margin: 0;
     }
-
+    .header {
+        width: 94%;
+    }
+    .form-container {
+        display: none;
+    }
     .table-container {
         overflow-x: auto;
-        width: 100%;
+        -webkit-overflow-scrolling: touch; /* Memberikan pengalaman scrolling yang lebih halus di perangkat mobile */
     }
 
     .data-table {
-        width: 100%;
+        width: 100%; /* Memungkinkan tabel untuk mengisi lebar container */
         min-width: 600px; /* Set a minimum width if needed */
-        display: block;
+        display: block; /* Ubah tabel menjadi block untuk meningkatkan responsif */
     }
 
     .data-table th, .data-table td {
-        text-align: left;
+        text-align: left; /* Pengaturan teks lebih baik untuk tampilan mobile */
         padding: 8px;
     }
 
-    .form-overlay {
-        width: 100%;
-        height: auto;
-        right: 0;
-        top: 0;
-    }
-
-    .popup-content {
-        width: 90%; /* Lebar popup di perangkat kecil */
-    }
 }
-
-/* Aturan tambahan untuk ponsel */
-@media (max-width: 576px) {
-    .cards {
-        flex-direction: column;
-        gap: 5px;
-    }
-
-    .card {
-        width: 100%;
-        margin: 0;
-        padding: 10px;
-    }
-
-    .table-container {
-        overflow-x: auto;
-    }
-
-    .data-table th, .data-table td {
-        padding: 5px;
-    }
-}
-
 
 .nav a.active {
     background-color: #007bff; /* Warna latar belakang untuk link yang aktif */
@@ -658,6 +665,7 @@ a{
     width: 100%;
 }
 
+/* Style untuk popup */
 .popup {
     display: none; /* Tersembunyi secara default */
     position: fixed;
@@ -705,4 +713,8 @@ form .input-request {
     border-radius: 5px;
     box-sizing: border-box;
 
+}
+
+.table-container .btn.edit{
+    padding-bottom: 50px;
 }

@@ -1,6 +1,5 @@
 <?php 
-session_start();
-include '../partials/header.php';
+include '../partials/TU-header.php';
 include '../db/db.php';
 include '../checkStock/get_stock.php';
 include '../control/process_form_barang.php';
@@ -17,7 +16,7 @@ $result = $conn->query("SELECT * FROM barang");
         <div class="user-info" id="userInfo">
             <div class="admin-clickable" id="adminClickable">
                 <img src="/assets/user.png" alt="Admin" class="admin-img">
-                <span class="admin-text">admin ▼</span>
+                <span class="admin-text">TataUsaha ▼</span>
             </div>
         </div>
 
@@ -33,7 +32,7 @@ $result = $conn->query("SELECT * FROM barang");
     
     <div class="data-barang">
         <div class="table-container">
-        <button class="btn-edit" onclick="showPopup()">Edit</button>
+        
             <h1>Data Peminjaman</h1>
             
             <table class="data-table">
@@ -194,7 +193,7 @@ function filterBySize() {
     var selectedSize = document.getElementById('filterSize').value;
     
     // Send an AJAX request to get the filtered data
-    fetch(`get_filtered_barang.php?ukuran=${selectedSize}`)
+    fetch(`../pages/get_filtered_barang.php?ukuran=${selectedSize}`)
         .then(response => response.text())
         .then(data => {
             // Replace the table body with the filtered data
